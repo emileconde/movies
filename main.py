@@ -1,26 +1,40 @@
 from flask import Flask, render_template, url_for, flash, redirect
+from restutils.restutil import get_popular_movies, get_upcoming_movies, get_now_playing_movies, get_popular_tv, get_top_rated_movies
 import requests
 import json
-from movieAPI import get_recent_data
 # from turbo_flask import Turbo
 
 app = Flask(__name__)
+
+upcoming_movies = get_upcoming_movies()
+now_playing = get_now_playing_movies()
+popular_movies = get_popular_movies()
+top_rated_movies = get_top_rated_movies()
+tv_series = get_popular_tv()
 
 
 @app.route("/")
 def home():
     return render_template(
         'home.html',
-        subtitle='Home Page',
-        text='This is the home page')
+        upcoming_movies=upcoming_movies,
+        now_playing=now_playing,
+        popular_movies=popular_movies,
+        tv_series=tv_series,
+        top_rated_movies=top_rated_movies)
 
+# @app.route("/")
+# def home():
+#     return render_template("movie_detail.html")
 
-url = "https://www.scorebat.com/video-api/v1/"
-response = requests.get(url)
-soccer_info = response.json()
-# print(soccer_info[0]['competition'])
-# print(get_recent_data())
-get_recent_data()
+@app.route("/details")
+def movie_detail():
+#     converted_id = int(id)
+#     for movie in popular_movies:
+#         if movie.id == converted_id:
+#             return render_template("movie_detail.html", movie=movie)
+    return render_template("movie_detail.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

@@ -29,7 +29,20 @@ def get_upcoming_movies():
     return parse_movie_list(upcoming_movies)
 
 
+def get_top_rated_movies():
+    moviesObject = tmdb.Movies()
+    top_rated_movies = moviesObject.top_rated()
+    return parse_movie_list(top_rated_movies)
+
+
 def get_popular_tv():
     tvObject = tmdb.TV()
     popular_tv = tvObject.popular()
     return parse_tv_list(popular_tv)
+
+
+def find(id):
+    ob_ject = tmdb.Find(id=id)
+    value = ob_ject.info()
+    return value
+

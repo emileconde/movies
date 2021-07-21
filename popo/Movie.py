@@ -10,7 +10,10 @@ class Movie:
         self.vote_average = vote_average
         
         
-
+        def __str__ (self):
+            return 'Movie(id=' + self.id + 'title=' + self.title + ')'
+        
+        
         
 class tv_show:
     def __init__(self, id, name, overview, poster_path, backdrop_path, vote_average, first_air_date):

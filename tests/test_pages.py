@@ -1,9 +1,8 @@
-from main import app
 import unittest
 import sys
 
-sys.path.append('../movies')
-
+sys.path.append('../')
+from main import app
 
 class BasicTests(unittest.TestCase):
 
@@ -19,10 +18,9 @@ class BasicTests(unittest.TestCase):
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
-    def test_movie_page(self):
-        response = self.app.get('/md', follow_redirects=True)
+    def test_movie_details(self):
+        response = self.app.get("/details/<Object:movie>")
         self.assertEqual(response.status_code, 200)
-
-
+        
 if __name__ == '__main__':
     unittest.main()

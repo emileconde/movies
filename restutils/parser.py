@@ -1,8 +1,9 @@
-from popo.Movie import Movie, tv_show
+from popo.Movie import Movie, tv_show, review
 
 POSTER_SIZE = "w500"
 BACKDROP_SIZE = "original"
 BASE_IMG_URL = "https://image.tmdb.org/t/p/"
+BASE_TRAILER_URL = "https://www.youtube.com/watch?v="
 
 
 def parse_movie_list(results):
@@ -61,13 +62,24 @@ def parse_tv_list(results):
 
 
 
-def parse_review(results):
+def parse_reviews(results):
      
     if(results is None):
         print("Nothing was returned")
         return ""
+    
+    parsed_reviews = []
+    review_list = results['results']
+    for i in range(len(review_list)):
+        author = review_list[i].get('author')
+        content = review_list[i].get('content')
+        reviewObject = review(author, content)
+        parsed_reviews.append(reviewObject)
+    return parsed_reviews
 
 
+def parse_trailer(key):
+    return BASE_TRAILER_URL+key
 
 
 """Contructs a uri from the paths"""

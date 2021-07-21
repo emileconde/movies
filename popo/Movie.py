@@ -25,4 +25,10 @@ class tv_show:
         self.vote_average = vote_average
         self.first_air_date = first_air_date
         
+        
+class review:
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+        
     

@@ -4,7 +4,7 @@ It uses helper methods from the parser.py to parse the json file and return obje
 
 import requests
 import tmdbsimple as tmdb
-from restutils.parser import parse_movie_list, parse_tv_list
+from restutils.parser import parse_movie_list, parse_tv_list, parse_reviews, parse_trailer
 tmdb.API_KEY = '3c41c56169da154b8c4b090993284bf8'
 tmdb.REQUESTS_SESSION = requests.Session()
 
@@ -50,7 +50,14 @@ def get_recommendations(movie_id):
 def get_reviews(movie_id):
     moviesObject = tmdb.Movies(movie_id)
     reviews = moviesObject.reviews()
-    return reviews
+    return parse_reviews(reviews)
+
+
+def get_trailers(movie_id):
+    moviesObject = tmdb.Movies(movie_id)
+    videos = moviesObject.videos()
+    single_trailer_key = videos['results'][0].get('key')
+    return parse_trailer(single_trailer_key)
 
 
 def find(id):

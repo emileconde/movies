@@ -26,6 +26,7 @@
         </div>
     </div>
     <!-- END NAV -->
+        
 
     <!-- HERO SECTION -->
     <div class="hero-section">
@@ -39,7 +40,7 @@
                     <div class="hero-slide-item-content">
                         <div class="item-content-wraper">
                             <div class="item-content-title top-down">
-                                {{movie.title}}
+                                <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">{{movie.title}}</a>
                             </div>
                             <div class="movie-infos top-down delay-2">
                                 <div class="movie-info">
@@ -78,6 +79,7 @@
         <div class="top-movies-slide">
             <div class="owl-carousel" id="top-movies-slide">
                {% for movie in now_playing %}
+                <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
                    <!-- MOVIE ITEM -->
                 <div class="movie-item">
                     <img src="{{movie.poster_path}}" alt="">
@@ -103,6 +105,7 @@
                         </div>
                     </div>
                 </div>
+                    </a>
                 <!-- END MOVIE ITEM -->
                {% endfor %}
                 
@@ -112,7 +115,7 @@
     </div>
     <!-- END HERO SECTION -->
 
-    <!-- LATEST MOVIES SECTION -->
+    <!-- POPULAR MOVIES SECTION -->
     <div class="section">
         <div class="container">
             <div class="section-header">
@@ -161,7 +164,7 @@
             <div class="movies-slide carousel-nav-center owl-carousel">
                   {% for serie in tv_series %}
                 <!-- MOVIE ITEM -->
-                <a href="#" class="movie-item">
+                <a href="{{ url_for('serie_detail', serie_id=serie.id) }}" class="movie-item">
                     <img src="{{serie.poster_path}}" alt="">
                     <div class="movie-item-content">
                         <div class="movie-item-title">
@@ -201,7 +204,7 @@
             <div class="movies-slide carousel-nav-center owl-carousel">
                {% for movie in top_rated_movies %}
                 <!-- MOVIE ITEM -->
-                <a href="#" class="movie-item">
+                <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="movie-item">
                     <img src="{{movie.poster_path}}" alt="">
                     <div class="movie-item-content">
                         <div class="movie-item-title">

@@ -12,6 +12,12 @@ popular_movies = get_popular_movies()
 top_rated_movies = get_top_rated_movies()
 tv_series = get_popular_tv()
 
+all_movies = []
+all_movies.append(upcoming_movies)
+all_movies.append(now_playing)
+all_movies.append(top_rated_movies)
+all_movies.append(tv_series)
+
 
 @app.route("/")
 def home():
@@ -23,17 +29,25 @@ def home():
         tv_series=tv_series,
         top_rated_movies=top_rated_movies)
 
-# @app.route("/")
-# def home():
-#     return render_template("movie_detail.html")
 
 @app.route("/details/<movie_id>")
 def movie_detail(movie_id):
     converted_id = int(movie_id)
-    for movie in popular_movies:
-        if movie.id == converted_id:
-            return render_template("movie_detail.html", movie=movie)
+    for movie_list in all_movies:
+            for movie in movie_list:
+                if movie.id == converted_id:
+                    return render_template("movie_detail.html", movie=movie)
     return render_template("movie_detail.html")
+
+
+@app.route("/series/<serie_id>")
+def serie_detail(serie_id):
+    converted_id = int(serie_id)
+    for movie_list in all_movies:
+            for serie in movie_list:
+                if serie.id == converted_id:
+                    return render_template("serie_detail.html", serie=serie)
+    return render_template("serie_detail.html")
 
 
 @app.route("/list")

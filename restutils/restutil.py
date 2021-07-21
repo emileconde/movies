@@ -41,6 +41,18 @@ def get_popular_tv():
     return parse_tv_list(popular_tv)
 
 
+def get_recommendations(movie_id):
+    moviesObject = tmdb.Movies(movie_id)
+    recommendations = moviesObject.recommendations()
+    return parse_movie_list(recommendations)
+
+
+def get_reviews(movie_id):
+    moviesObject = tmdb.Movies(movie_id)
+    reviews = moviesObject.reviews()
+    return reviews
+
+
 def find(id):
     ob_ject = tmdb.Find(id=id)
     value = ob_ject.info()

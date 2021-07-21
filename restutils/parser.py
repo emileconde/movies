@@ -60,9 +60,17 @@ def parse_tv_list(results):
     return list_of_tv_shows
 
 
+
+def parse_review(results):
+     
+    if(results is None):
+        print("Nothing was returned")
+        return ""
+
+
+
+
 """Contructs a uri from the paths"""
-
-
 def format_images(size, path):
     if path is not None:
         if size == POSTER_SIZE:
@@ -74,4 +82,4 @@ def format_images(size, path):
     return BASE_IMG_URL + size + path
 
 
-print(type(POSTER_SIZE))
+# print(type(POSTER_SIZE))

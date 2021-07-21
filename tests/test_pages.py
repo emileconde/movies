@@ -19,8 +19,12 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_movie_details(self):
-        response = self.app.get("/details/<Object:movie>")
+        response = self.app.get("/details/520763", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         
+    def test_list(self):
+        response = self.app.get("/list", follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+    
 if __name__ == '__main__':
     unittest.main()

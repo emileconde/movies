@@ -27,14 +27,18 @@ def home():
 # def home():
 #     return render_template("movie_detail.html")
 
-@app.route("/details")
-def movie_detail():
-#     converted_id = int(id)
-#     for movie in popular_movies:
-#         if movie.id == converted_id:
-#             return render_template("movie_detail.html", movie=movie)
+@app.route("/details/<movie_id>")
+def movie_detail(movie_id):
+    converted_id = int(movie_id)
+    for movie in popular_movies:
+        if movie.id == converted_id:
+            return render_template("movie_detail.html", movie=movie)
     return render_template("movie_detail.html")
 
+
+@app.route("/list")
+def movie_list():
+    return render_template("list.html")
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

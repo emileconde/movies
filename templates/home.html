@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-    <body>
     <!-- NAV -->
     <div class="nav-wrapper">
         <div class="container">
@@ -122,7 +121,7 @@
             <div class="movies-slide carousel-nav-center owl-carousel">
                {% for movie in popular_movies %}
                 <!-- MOVIE ITEM -->
-                <a href="{{ url_for('movie_detail', id=movie.id) }}" class="movie-item">
+                <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="movie-item">
                     <img src="{{movie.poster_path}}" alt="">
                     <div class="movie-item-content">
                         <div class="movie-item-title">

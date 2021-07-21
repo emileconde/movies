@@ -1,5 +1,22 @@
-{% extends "base.html" %}
+{% extends "base_movies.html" %}
 
 {% block content %}
-    something something
+
+<div class="col-sm-3 mb-3">
+  <img src="{{movie.poster_path}}" class="img-thumbnail" alt="...">
+
+</div>
+
+<div class="col-lg mb-3">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{movie.title}}</h5>
+      <p class="card-text">Storyline: {{movie.overview}}</p>
+      <p class="card-text">Popularity: {{movie.popularity}}</p>
+      <p class="card-text">Released: {{movie.release_date}}</p>
+      <p class="card-text">Vote: {{movie.vote_average}}</p>
+  </div>
+</div>
+</div>
+
 {% endblock %}

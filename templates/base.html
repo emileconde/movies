@@ -2,128 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Flix
-    </title>
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-    <!-- OWL CAROUSEL -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <!-- BOX ICONS -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <!-- APP CSS -->
-    <link rel="stylesheet" href="/static/grid.css">
-    <link rel="stylesheet" href="/static/app.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+<body>
 
 
-    <body>
-     {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{url_for('home')}}">Flix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Popular</a>
+            <a class="nav-link" href="#">Now Playing</a>
+            <a class="nav-link" href="#">Series</a>
+            <a class="nav-link" href="{{url_for('search_form')}}">Favorite</a>
+            <a class="nav-link" href="#">Search</a>
 
-     {% endblock %}
-    </body>
-   
-    <!-- FOOTER SECTION -->
-    <footer class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-4 col-md-6 col-sm-12">
-                    <div class="content">
-                        <a href="#" class="logo">
-                            <i class='bx bx-movie-play bx-tada main-color'></i>Fl<span class="main-color">i</span>x
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut veniam ex quos hic id nobis beatae earum sapiente! Quod ipsa exercitationem officiis non error illum minima iusto et. Dolores, quibusdam?
-                        </p>
-                        <div class="social-list">
-                            <a href="#" class="social-item">
-                                <i class="bx bxl-facebook"></i>
-                            </a>
-                            <a href="#" class="social-item">
-                                <i class="bx bxl-twitter"></i>
-                            </a>
-                            <a href="#" class="social-item">
-                                <i class="bx bxl-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-8 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Flix</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Browse</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Help</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Download app</b></p>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="#">
-                                            <img src="static/images/google-play.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="static/images/app-store.png" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </footer>
-    <!-- END FOOTER SECTION -->
+      </nav>
 
-    <!-- COPYRIGHT SECTION -->
-    <div class="copyright">
-        Copyright 2021 <a href="https://www.youtube.com/" target="_blank">
-            seo-project2</a>
-    </div>
-    <!-- END COPYRIGHT SECTION -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class=flashes>
+        {% for message in messages %}
+        <li class="alert alert-danger"> {{message}}</li>
+        {% endfor %}
+      </ul>
+        {% endif %}
+      {% endwith %}
 
-    <!-- SCRIPT -->
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- OWL CAROUSEL -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
-    <!-- APP SCRIPT -->
-    <script src="static/app.js"></script>
 
+      <div class="container">
+        <div class="row mt-3">
+
+      {% block search %}
+
+
+      {% endblock %}
+
+      </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-3">
+
+      {% block movies %}
+        
+
+      {% endblock %}
+
+      </div>
+      </div>
+    
+    
+    
+        {% block recommendation %}
+    
+        {% endblock %}
+    
+    
+
+        {% block comments %}
+        {% endblock %}
+    
+    
+    
+      <div class="container">
+        <div class="row mt-3">
+
+      {% block search_result %}
+
+
+      {% endblock %}
+
+      </div>
+      </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
 </html>
-

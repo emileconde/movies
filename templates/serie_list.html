@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block movies %}
-{% for movie in movies %}
+{% for serie in series %}
 <div class="col-sm mb-3">
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{movie.poster_path}}" alt="Card image cap">
+  <img class="card-img-top" src="{{serie.poster_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{movie.title}}</h5>
-    <p class="card-text">{{movie.release_year}}</p>
+    <h5 class="card-title">{{serie.name}}</h5>
+    <p class="card-text">{{serie.first_air_date}}</p>
     <a href="#" class="btn btn-primary">view more</a>
   </div>
 </div>
 </div>
 {% endfor %}
-{%endblock%}
+{% endblock %}

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="/static/horizontal.css">
+    </head>
 <body>
 
 
@@ -19,9 +20,9 @@
             <a class="nav-link active" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
             <a class="nav-link" href="#">Popular</a>
             <a class="nav-link" href="#">Now Playing</a>
-            <a class="nav-link" href="#">Series</a>
-            <a class="nav-link" href="{{url_for('search_form')}}">Favorite</a>
-            <a class="nav-link" href="#">Search</a>
+            <a class="nav-link" href="{{url_for('serie_list')}}">Series</a>
+            <a class="nav-link" href="">Favorite</a>
+            <a class="nav-link" href="{{url_for('search_form')}}">Search</a>
 
           </div>
         </div>

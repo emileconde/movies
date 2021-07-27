@@ -1,12 +1,12 @@
 class Movie:
-    def __init__(self, id, title, overview, popularity, backdrop_path, poster_path, reslease_date, vote_average):
+    def __init__(self, id, title, overview, popularity, backdrop_path, poster_path, release_date, vote_average):
         self.id = id
         self.title = title
         self.overview = overview
         self.popularity = popularity
         self.backdrop_path = backdrop_path
         self.poster_path = poster_path
-        self.reslease_date = reslease_date
+        self.release_date = release_date
         self.vote_average = vote_average
         
         

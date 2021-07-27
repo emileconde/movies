@@ -2,6 +2,22 @@
 
 {% block movies %}
 
+<script>
+        $(document).ready(function() {
+            var url = $("#Geeks3").attr('src');
+            $("#Geeks2").on('hide.bs.modal', function() {
+                $("#Geeks3").attr('src', '');
+            });
+            $("#Geeks2").on('show.bs.modal', function() {
+                $("#Geeks3").attr('src', url);
+            });
+        });
+    </script>
+
+
+
+
+
 <div class="col-sm-3 mb-3">
   <img src="{{movie.poster_path}}" class="img-thumbnail" alt="...">
 
@@ -15,6 +31,37 @@
       <p class="card-text">Popularity: {{movie.popularity}}</p>
       <p class="card-text">Released: {{movie.release_date}}</p>
       <p class="card-text">Vote: {{movie.vote_average}}</p>
+       
+      
+      <div class="bs-example">
+            <a href="#Geeks2"
+               class="btn btn-lg btn-primary"
+               data-toggle="modal">watch trailer</a>
+
+            <div id="Geeks2" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="Geeks3" width="450" height="350"
+                                    src= "{{trailer}}"
+                                    frameborder="0" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+      
+      <br>
+      <a class="btn btn-primary" href="{{url_for('add_to_favorite', movie_id=movie.id)}}">Add to favorite</a>
+      
   </div>
 </div>
 </div>
@@ -23,7 +70,7 @@
 {% block recommendation%}
     
     <hr style="width:100%;text-align:left;margin-left:0">
-    <h3>Recommended:</h3>
+    <h3 style="margin-left: 30px;">Recommended:</h3> 
    <div class="container testimonial-group">
 <div class="row text-center">
 
@@ -33,9 +80,11 @@
 <div class="card" style="width: 15rem;">
   <img class="img-thumbnail" src="{{movie.poster_path}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{movie.title}}</h5>
+      
+      <h6 class="card-title">{{movie.title}}</h6>
+      
     <p class="card-text">{{movie.release_year}}</p>
-    <a href="#" class="btn btn-primary">view more</a>
+    <a href="{{url_for('movie_detail',movie_id=movie.id)}}" class="btn btn-primary">view more</a>
   </div>
 </div>
 </div>
@@ -48,24 +97,21 @@
 {% endblock %}
 
 {% block comments %}
-
+<h3 style="margin-left: 30px;" >Comments:</h3>
 <hr style="width:100%;text-align:left;margin-left:0">
-   <div class="container testimonial-group">
+   <div class="container card">
 <div class="row text-center">
 
-    <h3>Comments:</h3>
-    
 {% for review in reviews %}
-    <div class="col-4">
-    <div class="col-sm mb-1">
+   <div class="col-sm mb-3">
 <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{review.author}}</h5>
-    <p class="card-text">{{review.content}}</p>
+    <div class="card-body">
+      <h5 class="card-title">{{review.author}}</h5>
+      <p class="card-text"> {{review.content}}</p>
+     
+    </div>
   </div>
-</div>
-</div>
- </div>
+  </div>
 {% endfor %}
     
 </div>

@@ -1,6 +1,6 @@
-{% extends "base_movies.html" %}
+{% extends "base.html" %}
 
-{% block content %}
+{% block movies %}
 
 <div class="col-sm-3 mb-3">
   <img src="{{serie.poster_path}}" class="img-thumbnail" alt="...">
@@ -21,5 +21,55 @@
 {% endblock %}
 
 {% block recommendation%}
+    
     <hr style="width:100%;text-align:left;margin-left:0">
+    <h3 style="margin-left: 30px;">Recommended:</h3>
+   <div class="container testimonial-group">
+<div class="row text-center">
+
+    
+{% for serie in recommended_list %}
+    <div class="col-4">
+    <div class="col-sm mb-1">
+<div class="card" style="width: 15rem;">
+  <img class="img-thumbnail" src="{{serie.poster_path}}" alt="Card image cap">
+  <div class="card-body">
+      
+      <h6 class="card-title">{{serie.name}}</h6>
+      
+    <p class="card-text">{{serie.first_air_date}}</p>
+    <a href="{{url_for('serie_detail',serie_id=serie.id)}}" class="btn btn-primary">view more</a>
+  </div>
+</div>
+</div>
+ </div>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block comments %}
+<h3 style="margin-left: 30px;" >Comments:</h3>
+<hr style="width:100%;text-align:left;margin-left:0">
+   <div class="container card">
+<div class="row text-center">
+
+{% for review in reviews %}
+   <div class="col-sm mb-3">
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{review.author}}</h5>
+      <p class="card-text"> {{review.content}}</p>
+     
+    </div>
+  </div>
+  </div>
+{% endfor %}
+
+    
+</div>
+</div>
 {% endblock %}

@@ -8,9 +8,10 @@
   <div class="card-body">
     <h5 class="card-title">{{serie.name}}</h5>
     <p class="card-text">{{serie.first_air_date}}</p>
-    <a href="#" class="btn btn-primary">view more</a>
+    <a href="{{url_for('serie_detail', serie_id=serie.id)}}" class="btn btn-primary">view more</a>
   </div>
 </div>
 </div>
 {% endfor %}
 {% endblock %}
+

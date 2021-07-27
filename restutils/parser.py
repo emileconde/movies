@@ -3,7 +3,7 @@ from popo.Movie import Movie, tv_show, review
 POSTER_SIZE = "w500"
 BACKDROP_SIZE = "original"
 BASE_IMG_URL = "https://image.tmdb.org/t/p/"
-BASE_TRAILER_URL = "https://www.youtube.com/watch?v="
+BASE_TRAILER_URL = "https://www.youtube.com/embed/"
 
 
 def parse_movie_list(results):
@@ -82,6 +82,21 @@ def parse_trailer(key):
     return BASE_TRAILER_URL+key
 
 
+def parse_single_movie(result):
+    id = result.get("id")
+    title = result.get("title")
+    overview = result.get("overview")
+    popularity = result.get("popularity")
+    backdrop_path = format_images(POSTER_SIZE, result.get("backdrop_path"))
+    poster_path = format_images(POSTER_SIZE, result.get("poster_path"))
+    release_date = result.get("release_date")
+    vote_average = result.get("vote_average")
+    
+    movie = Movie(id, title, overview, popularity, backdrop_path, poster_path, release_date, vote_average)
+    
+    return movie
+
+
 """Contructs a uri from the paths"""
 def format_images(size, path):
     if path is not None:
@@ -92,6 +107,7 @@ def format_images(size, path):
     else:
         return ""
     return BASE_IMG_URL + size + path
+
 
 
 # print(type(POSTER_SIZE))

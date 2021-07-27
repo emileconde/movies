@@ -4,9 +4,10 @@ It uses helper methods from the parser.py to parse the json file and return obje
 
 import requests
 import tmdbsimple as tmdb
-from restutils.parser import parse_movie_list, parse_tv_list, parse_reviews, parse_trailer
+from restutils.parser import parse_movie_list, parse_tv_list, parse_reviews, parse_trailer, parse_single_movie
 tmdb.API_KEY = '3c41c56169da154b8c4b090993284bf8'
 tmdb.REQUESTS_SESSION = requests.Session()
+
 
 """id, title, overview, popularity, backdrop_path, poster_path, reslease_date"""
 
@@ -59,6 +60,31 @@ def get_trailers(movie_id):
     single_trailer_key = videos['results'][0].get('key')
     return parse_trailer(single_trailer_key)
 
+
+
+def get_movie_by_id(movie_id):
+    url = "https://api.themoviedb.org/3/movie/"+movie_id+"?api_key=3c41c56169da154b8c4b090993284bf8"
+    raw = requests.get(url).json()
+    return parse_single_movie(raw)
+    
+    
+def search(query, year):
+    searchObject = tmdb.Search()
+    movie_list = searchObject.movie(query=query, year=year)
+    return parse_movie_list(movie_list)
+    
+    
+def get_tv_recommendation(id):
+    tvObject = tmdb.TV(id)
+    recommendations = tvObject.recommendations()
+    return parse_tv_list(recommendations)
+    
+
+def get_tv_reviews(id):
+    tvObject = tmdb.TV(id)
+    reviews = tvObject.reviews()
+    return parse_reviews(reviews)
+    
 
 def find(id):
     ob_ject = tmdb.Find(id=id)
